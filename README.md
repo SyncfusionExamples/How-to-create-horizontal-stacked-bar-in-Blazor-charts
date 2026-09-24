@@ -1,68 +1,70 @@
-# How-to-create-horizontal-stacked-bar-in-Blazor-charts
+# How to Create a Horizontal Stacked Bar in Syncfusion Blazor Charts
 
-This article explains how to create a horizontal stacked bar in [Blazor Chart Component](https://www.syncfusion.com/blazor-components/blazor-charts).
+## Overview
 
-**Creating stacked bar series in Blazor chart**
+This sample demonstrates how to create a horizontal stacked bar chart using Syncfusion [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts). The implementation uses multiple stacking bar series bound to a shared data source, allowing related values to be displayed as horizontally stacked segments within each category.
 
-[Stacked Bar Chart](https://www.syncfusion.com/blazor-components/blazor-charts/chart-types/stacked-bar-chart) is a chart with Y values stacked over one another in the series order. It shows the relation between individual values to the total sum of the points. To render a [Stacked Bar](https://www.syncfusion.com/blazor-components/blazor-charts/chart-types/stacked-bar-chart) series, set the series [Type](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries_Type) as [StackingBar](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeriesType.html#Syncfusion_Blazor_Charts_ChartSeriesType_StackingBar).
+The chart renders country-based categorical data and compares multiple values within a single horizontal bar. By using stacked bar series, the sample helps visualize individual contributions to the overall total for each category while maintaining an easy-to-read horizontal layout.
 
-The following code snippet demonstrates how to render a stacked bar in Blazor chart:
+## Key Features
 
-**Index.razor**
+- Uses the `SfChart` component to render the chart.
+- Configures `ChartPrimaryXAxis` with `ValueType="ValueType.Category"` for category-based axis rendering.
+- Uses `ChartSeriesCollection` to host multiple chart series.
+- Binds chart data through the `DataSource` property.
+- Maps category values using the `XName` property.
+- Maps numerical values using the `YName` property.
+- Uses `Type="ChartSeriesType.StackingBar"` to create horizontal stacked bar series.
+- Demonstrates multiple stacked series sharing the same data source.
+- Uses a strongly typed `ChartData` model containing:
+  - `X`
+  - `YValue`
+  - `YValue1`
+- Displays comparative data for multiple categories including USA, GBR, CHN, UK, AUS, IND, DEN, and MEX.
 
-```cshtml
+## Prerequisites
 
-@using Syncfusion.Blazor.Charts
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet) compatible with the project's target framework
 
-<SfChart>
-    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+## How to Run the Project
 
-    <ChartSeriesCollection>
-        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue" Type="ChartSeriesType.StackingBar">
-        </ChartSeries>
-        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue1" Type="ChartSeriesType.StackingBar">
-        </ChartSeries>
-    </ChartSeriesCollection>
-</SfChart>
+**Visual Studio 2022**
 
-@code {
+1. Clone the repository.
+2. Open the following project file directly in Visual Studio 2022:
 
-    public class ChartData
-    {
-        public string X { get; set; }
-        public double YValue { get; set; }
-        public double YValue1 { get; set; }
-    }
+   `HorizontalBar/HorizontalBar.csproj`
 
-    public List<ChartData> MedalDetails = new List<ChartData>
-    {
-        new ChartData { X= "USA", YValue= 46, YValue1=56 },
-        new ChartData { X= "GBR", YValue= 27, YValue1=17 },
-        new ChartData { X= "CHN", YValue= 26, YValue1=36 },
-        new ChartData { X= "UK", YValue= 56,  YValue1=16 },
-        new ChartData { X= "AUS", YValue= 12, YValue1=46 },
-        new ChartData { X= "IND", YValue= 26, YValue1=16 },
-        new ChartData { X= "DEN", YValue= 26, YValue1=12 },
-        new ChartData { X= "MEX", YValue= 34, YValue1=32 },
-    };
-}
+3. Restore the required NuGet packages.
+4. Build the project.
+5. Press `Ctrl+F5` to run the application.
 
+**Visual Studio Code**
+
+1. Clone the repository.
+2. Open the repository folder in Visual Studio Code.
+3. Open the integrated terminal.
+4. Navigate to the project directory.
+
+```bash
+cd HorizontalBar
+dotnet restore
+dotnet run
 ```
 
-The following screenshot illustrates the output of the above code snippet.
+5. Open the local application URL displayed in the terminal after the application starts.
 
-**Output:**
+## Project Structure
 
-![Horizontal Stacked Bar](/Horizontal-stacked-bar.png)
+`HorizontalBar/Pages/Index.razor` - Demonstrates the horizontal stacked bar chart implementation using `SfChart`, `ChartSeriesCollection`, and multiple `ChartSeries` elements configured with `ChartSeriesType.StackingBar`.
 
-[View the Sample in GitHub](https://github.com/SyncfusionExamples/How-to-create-horizontal-stacked-bar-in-Blazor-charts)
+## Support and Feedback
 
-**Conclusion**
+- For general product questions, visit the [Syncfusion Community Forum](https://www.syncfusion.com/forums) or [Syncfusion Support](https://www.syncfusion.com/support).
+- To report an issue specific to this sample, open a GitHub issue in this repository.
+- Refer to the official Syncfusion stacked bar chart documentation: https://help.syncfusion.com/chart-sdk/blazor/charts/chart-types/stacked-bar
 
-I hope you enjoyed learning how to create stacked bar of Blazor Chart Component.
+## License
 
-You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blazor-components/blazor-charts) page to know about its other groundbreaking feature representations and [documentation](https://blazor.syncfusion.com/documentation/chart/getting-started), and how to quickly get started for configuration specifications. You can also explore our [Blazor Chart example](https://blazor.syncfusion.com/demos/chart/line?theme=bootstrap5) to understand how to create and manipulate data.
-
-For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
-
-If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
+This is a Syncfusion sample project provided to demonstrate product usage. Review the [Syncfusion license terms](https://www.syncfusion.com/sales/pricing?category=ui-components) before using Syncfusion components in your own applications.
