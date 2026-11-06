@@ -8,7 +8,7 @@ This article explains how to create a horizontal stacked bar in [Blazor Chart Co
 
 The following code snippet demonstrates how to render a stacked bar in Blazor chart:
 
-**Index.razor**
+**Components/Pages/Home.razor**
 
 ```cshtml
 
